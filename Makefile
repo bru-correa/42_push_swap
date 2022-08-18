@@ -30,6 +30,8 @@ OBJ_FILES			= $(patsubst %, $(OBJ_DIR)/%.o, \
 MAIN				= push_swap.c
 
 # ********** TESTS VARIABLES ********** #
+
+# HACK: Remove this before final commit!!!
 TEST_DIR			= ./tests
 TEST_SRC_DIR		= $(TEST_DIR)/src
 TEST_OBJ_DIR		= $(TEST_DIR)/obj
@@ -39,12 +41,14 @@ TEST_OBJ_FILES		= $(patsubst %, $(TEST_OBJ_DIR)%.o, \
 TEST_MAIN			= tests.c
 
 # ********** RULES ********** #
+
 all:				$(NAME)
 
 $(NAME):			required
 					$(CC) -g $(MAIN) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
 					echo $(DONE_MSG)
 
+# Compile required src files
 required:			compile_message $(OBJ_DIR) $(OBJ_FILES) libft
 
 libft:
@@ -70,18 +74,19 @@ re_bonus:			fclean bonus
 compile_message:
 					echo $(COMPILING_MSG)
 
+# Compile with -g flag and output the 'debug' file
 debug:				setup_debug all compile_message
 
+# Add -g flag and change output to debug
 setup_debug:
 					$(eval NAME=debug)
 					$(eval CFLAGS+=-g)
 
 # ********** TESTS RULES ********** #
+
 tests:				all compile_message 
 					./tests/test.sh
 
-# TODO: Make the debug file for x test (check makefile args)
-# TODO: Make rules for compiling with "-g" and creating the debug file
 # TODO: Make tests download my test repo
 
-.PHONY:	all run clean fclean re run libft
+.PHONY:	all run clean fclean re re_bonus libft debug setup_debug tests

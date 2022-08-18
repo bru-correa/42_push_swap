@@ -6,11 +6,23 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/08/17 18:29:05 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:00:55 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(void)
+#include "push_swap.h"
+
+int	main(int argc, char *argv[])
 {
+	int	i;
+
+	if (argc == 0)
+		return (0);
+	i = 1;
+	while (argv[i] != NULL)
+	{
+		ft_printf("%s\n", argv[i]);
+		i++;
+	}
 	return (0);
 }

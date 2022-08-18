@@ -2,28 +2,31 @@
 
 # ********** Constants ********** #
 
-# PS = Push Swap
-PS_DIR=./
-PS_PROGRAM=$PROJECT_DIR/push_swap
-PS_CHECKER=$PROJECT_DIR/checker
+# PS = Push Swap prefix for avoiding conflict with environment variables
+readonly PS_DIR=.
+readonly PS_PROGRAM=$PS_DIR/push_swap
+readonly PS_CHECKER=$PS_DIR/checker
 
-COLOR_RED="\033[31;1m"
-COLOR_GREEN="\033[32;1m"
-COLOR_YELLOW="\033[33;1m"
-COLOR_NORMAL="\033[0m"
+# HACK: Try solve this more elegantly
+readonly PS_TEST_DIR=./tests
+
+readonly PS_COLOR_RED="\033[31;1m"
+readonly PS_COLOR_GREEN="\033[32;1m"
+readonly PS_COLOR_YELLOW="\033[33;1m"
+readonly PS_COLOR_NORMAL="\033[0m"
 
 # ********** General Utils Functions ********** #
 
 print_red() {
-  printf "$COLOR_RED$1$COLOR_NORMAL\n"
+  printf "$PS_COLOR_RED$1$PS_COLOR_NORMAL\n"
 }
 
 print_green() {
-  printf "$COLOR_GREEN$1$COLOR_NORMAL\n"
+  printf "$PS_COLOR_GREEN$1$PS_COLOR_NORMAL\n"
 }
 
 print_yellow() {
-  printf "$COLOR_YELLOW$1$COLOR_NORMAL\n"
+  printf "$PS_COLOR_YELLOW$1$PS_COLOR_NORMAL\n"
 }
 
 # Print a line with 80 '-' characters followed by a newline character
@@ -34,7 +37,7 @@ print_div() {
 
 # Remove all previous log files, if they exist
 clean_log_files() {
-  rm -f ./logs/*
+  rm -f $PS_TEST_DIR/logs/*.log
 }
 
 
@@ -58,7 +61,7 @@ check_norm() {
 
 # Check if the push swap file exists
 check_push_swap() {
-  printf "Checking if can execute push_swap: "
+  printf "Checking push_swap exists: "
   if [[ -x $PS_PROGRAM ]]; then
     print_green "[OK]"
   else
@@ -68,36 +71,43 @@ check_push_swap() {
   print_div
 }
 
-# TODO: Put the output in a log file
 # Check if wrong inputs return an error message
 # First parameter: the test name
 # Second parameter: push_swap args
 check_invalid_input() {
   local _test_name="$1"
-  local _args="$2"
+  local _args=($2)
 
+  printf "$_test_name: "
   local _output
-  _output =`$PS_PROGRAM $1`
-  if [[ "$_output" == "Error\n" ]]; then
+  _output=$($PS_PROGRAM ${_args[@]})
+  local _first_line
+  _first_line=$(echo "$_output" | head -1)
+  if [[ "$_first_line" == "Error\n" ]]; then
     print_green "[OK]"
   else
     print_red "[KO]"
-    `printf "Expected:\nError\n" > ./logs/$_test_name`
-    `printf "Output:\n$_output" >> ./logs/$_test_name`
+    printf "Expected Output:\nError\n" >> "$PS_TEST_DIR/logs/$_test_name.log"
+    printf "Output:\n$_output" >> "$PS_TEST_DIR/logs/$_test_name.log"
   fi
 }
 
-# TODO: Check if push_swap printed something
 # Check if already sorted lists don't crash the program or return an instruction
+# First parameter: the test name
+# Second parameter: push_swap args
 check_sorted_lists() {
-  local _args="$1"
+  local _test_name="$1"
+  local _args=($2)
 
+  printf "$_test_name: "
   local _output
-  _output = $($PS_PROGRAM | wc -l)
-  if [[ $_output -eq 0 ]]; then
+  _output=`$PS_PROGRAM ${_args[@]}`
+  if [[ -z "$_output" ]]; then
     print_green "[OK]"
   else
     print_red "[KO]"
+    printf "Expected no output!\n" >> "$PS_TEST_DIR/logs/$_test_name.log"
+    printf "Output:\n$_output" >> "$PS_TEST_DIR/logs/$_test_name.log"
   fi
 }
 
@@ -110,7 +120,8 @@ check_unsorted_lists() {
   output = $($_output | wc -l)
 }
 
-# TODO: Check push_swap optimization. See https://github.com/laisarena/push_swap_tester. Rate with 5*
+# TODO: Check push_swap optimization. Rate with stars '*'
+# See https://github.com/laisarena/push_swap_tester.
 
 
 # ********** Main Function ********** #
@@ -119,7 +130,18 @@ main () {
   clean_log_files
   check_norm
   check_push_swap
-  check_invalid_input
+  printf "Checking invalid inputs\n"
+  check_invalid_input "alpha_chars" "a b c d e"
+  check_invalid_input "num_and_alpha" "42 36 24 forty-two"
+  check_invalid_input "max_int" "42 24 2147483648"
+  check_invalid_input "min_int" "42 24 -2147483649"
+  print_div
+  printf "Checking ordered lists\n"
+  check_sorted_lists "no_args"
+  check_sorted_lists "ordered_list0" "42"
+  check_sorted_lists "ordered_list1" "24 42 36 48 70"
+  check_sorted_lists "ordered_list2" "1 2"
+  print_div
 }
 
 main
