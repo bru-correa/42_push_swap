@@ -74,13 +74,15 @@ re_bonus:			fclean bonus
 compile_message:
 					echo $(COMPILING_MSG)
 
-# Compile with -g flag and output the 'debug' file
-debug:				setup_debug all compile_message
 
 # Add -g flag and change output to debug
 setup_debug:
 					$(eval NAME=debug)
 					$(eval CFLAGS+=-g)
+
+# Compile with -g flag and output the 'debug' file
+debug:				setup_debug all compile_message
+					gdb --quiet ./debug -tui
 
 # ********** TESTS RULES ********** #
 

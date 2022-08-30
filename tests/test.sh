@@ -190,4 +190,5 @@ main
 # TODO: Change all `` to subshells $()
 # TODO: Create a function for each test section so you can skip them later
 # TODO: Read the cli args and save the config in a file like tester.conf
-# TODO: Test negative numbers
+# TODO: Check timeout in tests
+# TODO: Check for memory leaks

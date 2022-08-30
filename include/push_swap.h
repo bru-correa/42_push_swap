@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/08/17 19:13:00 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:05:00 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 # define PUSH_SWAP_H
 
 /********** INCLUDE **********/
+
 # include "libft.h"
 
 /********** STRUCTS **********/
+
+/**
+  The node list that will be used to implement the 'stack'
+**/
 typedef struct s_node
 {
 	int				data;
@@ -25,5 +30,47 @@ typedef struct s_node
 }	t_node;
 
 /********** PROTOTYPES **********/
+
+/**
+  Alloc memory, create a new node with `data` and return it.
+  The node next and prev properties will be the node itself
+**/
+t_node	*node_create(int data);
+
+/**
+  Create a node with `data` and add it at the end of the node list.
+  If any node in the list already contains the same `data` value,
+  the program will exit
+**/
+void	node_append(t_node **start_node, int data);
+
+/**
+  Create a node with `data` and add it at the start of the node list.
+  If any node in the list already contains the same `data` value,
+  the program will exit. The `start_node` will now point to the new node address
+**/
+void	node_insert(t_node **start_node, int data);
+
+/**
+  Remove the first node from the list and free its memory.
+  `start_node` will now point to the next node.
+  If the node list contains only one element, `start_node` will point to NULL.
+**/
+void	node_pop(t_node **start_node);
+
+/**
+  Free all the allocated nodes from the list and set `start_node` to NULL
+**/
+void	node_clear(t_node **start_node);
+
+/**
+  Return the length of the node list. If the list is empty returns 0
+**/
+int		node_count(t_node **start_node);
+
+/**
+  Check if `data` already exists in the node list
+**/
+void	check_repeated_data(t_node **start_node, int data);
 
 #endif

@@ -6,3 +6,5 @@ manual_solutions.md
 debug
 push_swap
 checker
+*.log
+gdb_script
