@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:57:54 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/08/29 17:02:20 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:28:06 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	node_append(t_node **start_node, int data)
 	t_node	*last_node;
 	t_node	*new_node;
 
-	new_node = node_create(data);
 	if (start_node == NULL)
+		return ;
+	new_node = node_create(data);
+	if (*start_node == NULL)
 	{
-		start_node = &new_node;
+		*start_node = new_node;
 		return ;
 	}
 	check_repeated_data(start_node, data);
@@ -36,6 +38,8 @@ void	node_insert(t_node **start_node, int data)
 {
 	t_node	*last_node;
 
+	if (start_node == NULL)
+		return ;
 	node_append(start_node, data);
 	last_node = (*start_node)->prev;
 	*start_node = last_node;

@@ -45,7 +45,7 @@ TEST_MAIN			= tests.c
 all:				$(NAME)
 
 $(NAME):			required
-					$(CC) -g $(MAIN) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
+					$(CC) $(MAIN) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
 					echo $(DONE_MSG)
 
 # Compile required src files
@@ -58,7 +58,7 @@ $(OBJ_DIR):
 					mkdir -p $@
 
 $(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c
-					$(CC) -c -g $< $(CFLAGS) -o $@
+					$(CC) -c $< $(CFLAGS) -o $@
 
 clean:
 					echo $(CLEANING_MSG)

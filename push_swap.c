@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/08/29 21:15:55 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/08 18:55:24 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ int	main(int argc, char *argv[])
 	ft_printf("Node Insert\n");
 	node_insert(start_node, 5);
 	print_stack(start_node);
+	ft_printf("Node Append\n");
+	node_append(start_node, 10);
+	print_stack(start_node);
+	node_clear(start_node);
+	ft_printf("Append empty list\n");
+	node_append(start_node, 20);
+	node_clear(start_node);
+	ft_printf("Insert empty list\n");
+	node_insert(start_node, 25);
+	node_clear(start_node);
+	ft_printf("Clear empty list\n");
 	node_clear(start_node);
 	free(start_node);
 	return (0);
