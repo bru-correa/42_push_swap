@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/08 18:55:24 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:57:52 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	start_node = create_stack(argv);
 	print_stack(start_node);
-	ft_printf("Node Pop\n");
-	node_pop(start_node);
-	print_stack(start_node);
-	ft_printf("Count: %d\n", node_count(start_node));
-	ft_printf("Node Insert\n");
-	node_insert(start_node, 5);
-	print_stack(start_node);
-	ft_printf("Node Append\n");
-	node_append(start_node, 10);
-	print_stack(start_node);
-	node_clear(start_node);
-	ft_printf("Append empty list\n");
-	node_append(start_node, 20);
-	node_clear(start_node);
-	ft_printf("Insert empty list\n");
-	node_insert(start_node, 25);
-	node_clear(start_node);
-	ft_printf("Clear empty list\n");
-	node_clear(start_node);
-	free(start_node);
 	return (0);
 }
 
@@ -56,24 +36,14 @@ t_node	**create_stack(char **argv)
 	int		i;
 	int		number;
 
-	start_node = malloc(sizeof(start_node));
-	if (start_node == NULL)
-	{
-		ft_putstr_fd("Error\n Could not allocate memory\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	if (ft_is_number(argv[1]) == TRUE)
-	{
-		number = ft_atoi(argv[1]);
-		*start_node = node_create(number);
-	}
-	i = 2;
+	start_node = NULL;
+	i = 1;
 	while (argv[i] != NULL)
 	{
 		if (ft_is_number(argv[i]) == TRUE)
 		{
 			number = ft_atoi(argv[i]);
-			node_append(start_node, number);
+			start_node = node_append(start_node, number);
 		}
 		else
 		{
