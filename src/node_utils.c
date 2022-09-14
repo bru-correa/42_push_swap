@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:50:25 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 19:24:21 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:39:31 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_node	*node_create(int data)
 {
 	t_node	*node;
 
-	node = malloc(sizeof(t_node*));
+	node = malloc(sizeof(t_node));
 	if (node == NULL)
 		exit_error("Could not allocate memory");
 	node->data = data;
@@ -29,7 +29,7 @@ t_node	**create_start_node(void)
 {
 	t_node	**start_node;
 
-	start_node = malloc(sizeof(t_node*));
+	start_node = malloc(sizeof(t_node));
 	if (start_node == NULL)
 		exit_error("Could not allocate memory");
 	*start_node = NULL;

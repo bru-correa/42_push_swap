@@ -6,13 +6,11 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 21:31:25 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:38:47 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include <stdlib.h>
 
 static void		print_stack(t_node **start_node);
 static t_node	**create_stack(char **argv);
@@ -21,7 +19,7 @@ static t_node	**add_arg_to_stack(t_node **stack, char *arg);
 
 int	main(int argc, char *argv[])
 {
-	t_node	**stack_a;
+	t_node			**stack_a;
 
 	if (argc <= 1)
 		return (0);
@@ -29,6 +27,8 @@ int	main(int argc, char *argv[])
 	if (node_count(stack_a) == 1)
 		return (0);
 	print_stack(stack_a);
+	stack_a = node_clear(stack_a);
+	test_operations();
 	return (0);
 }
 

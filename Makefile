@@ -29,6 +29,9 @@ OBJ_FILES			= $(patsubst %, $(OBJ_DIR)/%.o, \
 
 MAIN				= push_swap.c
 
+VALGRIND			= valgrind --leak-check=full --show-leak-kinds=all
+VALGRIND			+= --track-origins=yes --quiet --tool=memcheck
+
 # ********** TESTS VARIABLES ********** #
 
 # HACK: Remove this before final commit!!!
@@ -83,6 +86,9 @@ setup_debug:
 # Compile with -g flag and output the 'debug' file
 debug:				setup_debug all compile_message
 					gdb --quiet ./debug -tui
+
+valgrind:			all
+					$(VALGRIND) ./$(NAME) 1 2 3 4 5
 
 # ********** TESTS RULES ********** #
 
