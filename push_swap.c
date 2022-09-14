@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 17:57:52 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/13 21:31:25 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,52 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	print_stack(t_node **start_node);
-t_node	**create_stack(char **argv);
-int		ft_is_number(char *str);
+static void		print_stack(t_node **start_node);
+static t_node	**create_stack(char **argv);
+static int		ft_is_number(char *str);
+static t_node	**add_arg_to_stack(t_node **stack, char *arg);
 
 int	main(int argc, char *argv[])
 {
-	t_node	**start_node;
+	t_node	**stack_a;
 
-	if (argc == 0)
+	if (argc <= 1)
 		return (0);
-	start_node = create_stack(argv);
-	print_stack(start_node);
+	stack_a = create_stack(argv);
+	if (node_count(stack_a) == 1)
+		return (0);
+	print_stack(stack_a);
 	return (0);
 }
 
 // `i` starts at 1 to ignore the first arg
-t_node	**create_stack(char **argv)
+static t_node	**create_stack(char **argv)
 {
-	t_node	**start_node;
+	t_node	**stack;
 	int		i;
-	int		number;
 
-	start_node = NULL;
+	stack = NULL;
 	i = 1;
 	while (argv[i] != NULL)
 	{
-		if (ft_is_number(argv[i]) == TRUE)
-		{
-			number = ft_atoi(argv[i]);
-			start_node = node_append(start_node, number);
-		}
-		else
-		{
-			ft_putstr_fd("Error\nInvalid arguments\n", 2);
-			exit(EXIT_FAILURE);
-		}
+		stack = add_arg_to_stack(stack, argv[i]);
 		i++;
 	}
-	return (start_node);
+	return (stack);
+}
+
+static t_node	**add_arg_to_stack(t_node **stack, char *arg)
+{
+	int	number;
+
+	if (ft_is_number(arg) == TRUE)
+	{
+		number = convert_to_int(arg);
+		stack = node_append(stack, number);
+	}
+	else
+		exit_error("Invalid arguments");
+	return (stack);
 }
 
 /**
@@ -61,7 +68,7 @@ t_node	**create_stack(char **argv)
   or smaller than min int.
   Return 0 if false and 1 if true
 **/
-int	ft_is_number(char *str)
+static int	ft_is_number(char *str)
 {
 	if (str == NULL)
 		return (FALSE);
@@ -76,7 +83,7 @@ int	ft_is_number(char *str)
 	return (TRUE);
 }
 
-void	print_stack(t_node **start_node)
+static void	print_stack(t_node **start_node)
 {
 	t_node	*current_node;
 

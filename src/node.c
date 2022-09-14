@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:57:54 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 17:49:22 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:10:41 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ t_node	**node_insert(t_node **start_node, int data)
 {
 	t_node	*last_node;
 
-	// if (start_node == NULL)
-	// 	return ;
 	start_node = node_append(start_node, data);
 	last_node = (*start_node)->prev;
 	*start_node = last_node;

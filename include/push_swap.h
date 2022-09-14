@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 18:07:51 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/13 21:04:54 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 /********** INCLUDE **********/
 
 # include "libft.h"
+
+/********** MACROS **********/
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 /********** STRUCTS **********/
 
@@ -30,6 +35,12 @@ typedef struct s_node
 }	t_node;
 
 /********** PROTOTYPES **********/
+
+/**
+  Convert `str` to an integer number.
+  If the number is larger than int limits, exit the program
+**/
+int		convert_to_int(const char *str);
 
 /**
   Alloc memory and create the head of the node list.
@@ -80,5 +91,10 @@ int		node_count(t_node **start_node);
   Check if `data` already exists in the node list
 **/
 void	check_repeated_data(t_node **start_node, int data);
+
+/**
+  Print Error\n and `msg` to stderr and exit
+**/
+void	exit_error(char *msg);
 
 #endif
