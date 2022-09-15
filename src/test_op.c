@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:22:59 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 04:09:47 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:25:49 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,37 @@ void	test_swap(t_node **stack_a, t_node **stack_b)
 {
 	t_operation	**operations;
 
-	operations = NULL;
+	operations = create_operations();
 	swap_a(stack_a, operations);
 	swap_b(stack_b, operations);
 	print_operations(operations);
 	print_stack(stack_a, "A");
 	print_stack(stack_b, "B");
 	swap_both(stack_a, stack_b, operations);
+	print_operations(operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	operation_clear(operations);
+	free(operations);
+}
+
+void	test_push(t_node **stack_a, t_node **stack_b)
+{
+	t_operation	**operations;
+
+	operations = create_operations();
+	ft_printf("Push A\n");
+	push_a(stack_a, stack_b, operations);
+	print_operations(operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	ft_printf("Push B\n");
+	push_b(stack_a, stack_b, operations);
+	push_b(stack_a, stack_b, operations);
+	push_b(stack_a, stack_b, operations);
+	push_b(stack_a, stack_b, operations);
+	push_b(stack_a, stack_b, operations);
+	push_b(stack_a, stack_b, operations);
 	print_operations(operations);
 	print_stack(stack_a, "A");
 	print_stack(stack_b, "B");
@@ -54,7 +78,7 @@ static void	print_operations(t_operation **operations)
 	current_op = *operations;
 	while (current_op != NULL)
 	{
-		ft_printf("%s", current_op->name);
+		ft_printf("%s\n", current_op->name);
 		current_op = current_op->next;
 	}
 }

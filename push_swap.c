@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 04:10:34 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:34:31 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int argc, char *argv[])
 	node_append(stack_b, 20);
 	node_append(stack_b, 30);
 	print_stack(stack_b, "B");
-	test_swap(stack_a, stack_b);
+	// test_swap(stack_a, stack_b);
+	test_push(stack_a, stack_b);
 	node_clear(stack_a);
 	free(stack_a);
 	node_clear(stack_b);
@@ -94,13 +95,13 @@ void	print_stack(t_node **stack, char *stack_name)
 {
 	t_node	*current_node;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
 		ft_printf("The stack %s is empty\n", stack_name);
 		return ;
 	}
 	ft_printf("Stack %s:\n", stack_name);
-	current_node = (*stack);
+	current_node = *stack;
 	ft_printf("%d\n", current_node->data);
 	current_node = current_node->next;
 	while (current_node != *stack)

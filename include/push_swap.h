@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 17:41:29 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:07:46 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,29 +128,46 @@ void		operation_append(t_operation **operations, char *name);
 void		operation_clear(t_operation **operations);
 
 /**
-  Swap the first two elements at the top of the Stack A,
+  Swap the first two elements at the top of the `stack_a`,
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
 void		swap_a(t_node **stack_a, t_operation **operations);
 
 /**
-  Swap the first two elements at the top of the Stack B,
+  Swap the first two elements at the top of the `stack_b`,
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
 void		swap_b(t_node **stack_b, t_operation **operations);
 
 /**
-  Swap the first two elements at the top of Stack A and Stack B,
+  Swap the first two elements at the top of `stack_a` and `stack_b`,
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
 void		swap_both(t_node **stack_a, t_node **stack_b,
 				t_operation **operations);
 
+/**
+  Take the first element at the top of `stack_b`
+  and put it at the top of `stack_a`.
+  If there's one or no elements in the list, just save the operation.
+**/
+void		push_a(t_node **stack_a, t_node **stack_b,
+				t_operation **operations);
+
+/**
+  Take the first element at the top of `stack_a`
+  and put it at the top of `stack_b`.
+  If there's one or no elements in the list, just save the operation.
+**/
+void		push_b(t_node **stack_a, t_node **stack_b,
+				t_operation **operations);
+
 void		test_operations(void);
 void		print_stack(t_node **stack, char *stack_name);
 void		test_swap(t_node **stack_a, t_node **stack_b);
+void		test_push(t_node **stack_a, t_node **stack_b);
 
 #endif
