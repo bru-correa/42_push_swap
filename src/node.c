@@ -6,87 +6,84 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:57:54 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 18:10:41 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:36:58 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-t_node	**node_append(t_node **start_node, int data)
+void	node_append(t_node **stack, int data)
 {
 	t_node	*last_node;
 	t_node	*new_node;
 
-	if (start_node == NULL)
-		start_node = create_start_node();
+	if (stack == NULL)
+		return ;
 	new_node = node_create(data);
-	if (*start_node == NULL)
+	if (*stack == NULL)
 	{
-		*start_node = new_node;
-		return (start_node);
+		*stack = new_node;
+		return ;
 	}
-	check_repeated_data(start_node, data);
-	last_node = (*start_node)->prev;
+	check_repeated_data(stack, data);
+	last_node = (*stack)->prev;
 	last_node->next = new_node;
-	(*start_node)->prev = new_node;
+	(*stack)->prev = new_node;
 	new_node->prev = last_node;
-	new_node->next = *start_node;
-	return (start_node);
+	new_node->next = *stack;
 }
 
-t_node	**node_insert(t_node **start_node, int data)
+void	node_insert(t_node **stack, int data)
 {
 	t_node	*last_node;
 
-	start_node = node_append(start_node, data);
-	last_node = (*start_node)->prev;
-	*start_node = last_node;
-	return (start_node);
+	if (stack == NULL)
+		return ;
+	node_append(stack, data);
+	last_node = (*stack)->prev;
+	*stack = last_node;
 }
 
-t_node	**node_pop(t_node **start_node)
+void	node_pop(t_node **stack)
 {
 	t_node	*second_node;
 	t_node	*last_node;
 
-	if (start_node == NULL || *start_node == NULL)
-		return (start_node);
-	if ((*start_node)->next == *start_node)
+	if (stack == NULL || *stack == NULL)
+		return ;
+	if ((*stack)->next == *stack)
 	{
-		free(*start_node);
-		*start_node = NULL;
-		return (start_node);
+		free(*stack);
+		*stack = NULL;
+		return ;
 	}
-	second_node = (*start_node)->next;
-	last_node = (*start_node)->prev;
+	second_node = (*stack)->next;
+	last_node = (*stack)->prev;
 	last_node->next = second_node;
 	second_node->prev = last_node;
-	free(*start_node);
-	*start_node = second_node;
-	return (start_node);
+	free(*stack);
+	*stack = second_node;
 }
 
-t_node	**node_clear(t_node **start_node)
+void	node_clear(t_node **stack)
 {
-	if (start_node == NULL)
-		return (start_node);
-	while (*start_node != NULL)
-		node_pop(start_node);
-	free(start_node);
-	return (NULL);
+	if (stack == NULL)
+		return ;
+	while (*stack != NULL)
+		node_pop(stack);
 }
 
-int	node_count(t_node **start_node)
+int	node_count(t_node **stack)
 {
 	t_node	*current_node;
 	int		length;
 
-	if (start_node == NULL || *start_node == NULL)
+	if (stack == NULL || *stack == NULL)
 		return (0);
 	length = 1;
-	current_node = (*start_node)->next;
-	while (current_node != *start_node)
+	current_node = (*stack)->next;
+	while (current_node != *stack)
 	{
 		length++;
 		current_node = current_node->next;

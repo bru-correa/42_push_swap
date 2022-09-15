@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/14 19:11:59 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:41:29 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			convert_to_int(const char *str);
   Alloc memory and create the head of the node list.
   The first element of the node list will be NULL.
 **/
-t_node		**create_start_node(void);
+t_node		**create_stack(void);
 
 /**
   Alloc memory, create a new node with `data` and return it.
@@ -65,47 +65,51 @@ t_node		**create_start_node(void);
 t_node		*node_create(int data);
 
 /**
-  Create a node with `data` and add it at the end of the node list.
-  If any node in the list already contains the same `data` value,
-  the program will exit. If the list is empty, create a new list and return it
-**/
-t_node		**node_append(t_node **start_node, int data);
-
-/**
-  Create a node with `data` and add it at the start of the node list.
+  Create a node with `data` and add it at the end of the stack.
   If any node in the list already contains the same `data` value,
   the program will exit.
-  The `start_node` will now point to the new node address.
-  If the list is empty, create a new list and return it
 **/
-t_node		**node_insert(t_node **start_node, int data);
+void		node_append(t_node **stack, int data);
 
 /**
-  Remove the first node from the list and free its memory.
-  `start_node` will now point to the next node.
-  If the node list contains only one element, `start_node` will point to NULL
+  Create a node with `data` and add it at the start of the stack.
+  If any node in the list already contains the same `data` value,
+  the program will exit.
+  The `stack` will now point to the new node address.
 **/
-t_node		**node_pop(t_node **start_node);
+void		node_insert(t_node **stack, int data);
 
 /**
-  Free all the allocated nodes from the list, free start_node and return NULL
+  Remove the first node from the stack and free its memory.
+  `stack` will now point to the next node.
+  If the stack contains only one element, `stack` will point to NULL
 **/
-t_node		**node_clear(t_node **start_node);
+void		node_pop(t_node **stack);
 
 /**
-  Return the length of the node list. If the list is empty returns 0
+  Free all the allocated nodes from the stack
 **/
-int			node_count(t_node **start_node);
+void		node_clear(t_node **stack);
 
 /**
-  Check if `data` already exists in the node list
+  Return the length of the stack. If the list is empty returns 0
 **/
-void		check_repeated_data(t_node **start_node, int data);
+int			node_count(t_node **stack);
+
+/**
+  Check if `data` already exists in the stack
+**/
+void		check_repeated_data(t_node **stack, int data);
 
 /**
   Print Error\n and `msg` to stderr and exit
 **/
 void		exit_error(char *msg);
+
+/**
+  Alloc memory and create the operations list. The first element is NULL
+**/
+t_operation	**create_operations(void);
 
 /**
   Alloc memory, create a new operation with `name` and return it.
@@ -115,15 +119,38 @@ t_operation	*operation_create(char *name);
 
 /**
   Create an operation with `name` and add it at the end of the list.
-  If `operations` is NULL, alloc memory and create a new `operations`
 **/
-t_operation	**operation_append(t_operation **operations, char *name);
+void		operation_append(t_operation **operations, char *name);
 
 /**
   Free all the elements of the list, free `operations` and return NULL
 **/
-t_operation	**operation_clear(t_operation **operations);
+void		operation_clear(t_operation **operations);
+
+/**
+  Swap the first two elements at the top of the Stack A,
+  and store the operation in `operations`.
+  If there's one or no elements in the list, just save the operation.
+**/
+void		swap_a(t_node **stack_a, t_operation **operations);
+
+/**
+  Swap the first two elements at the top of the Stack B,
+  and store the operation in `operations`.
+  If there's one or no elements in the list, just save the operation.
+**/
+void		swap_b(t_node **stack_b, t_operation **operations);
+
+/**
+  Swap the first two elements at the top of Stack A and Stack B,
+  and store the operation in `operations`.
+  If there's one or no elements in the list, just save the operation.
+**/
+void		swap_both(t_node **stack_a, t_node **stack_b,
+				t_operation **operations);
 
 void		test_operations(void);
+void		print_stack(t_node **stack, char *stack_name);
+void		test_swap(t_node **stack_a, t_node **stack_b);
 
 #endif

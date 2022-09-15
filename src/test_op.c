@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:22:59 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/14 19:11:17 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 04:09:47 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,30 @@ void	test_operations(void)
 	t_operation	**operations;
 
 	operations = NULL;
-	operations = operation_append(operations, "pa\n");
-	operations = operation_append(operations, "pb\n");
-	operations = operation_append(operations, "rrr\n");
+	operation_append(operations, "pa\n");
+	operation_append(operations, "pb\n");
+	operation_append(operations, "rrr\n");
 	print_operations(operations);
-	operations = operation_clear(operations);
+	operation_clear(operations);
 	print_operations(operations);
+}
+
+void	test_swap(t_node **stack_a, t_node **stack_b)
+{
+	t_operation	**operations;
+
+	operations = NULL;
+	swap_a(stack_a, operations);
+	swap_b(stack_b, operations);
+	print_operations(operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	swap_both(stack_a, stack_b, operations);
+	print_operations(operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	operation_clear(operations);
+	free(operations);
 }
 
 static void	print_operations(t_operation **operations)

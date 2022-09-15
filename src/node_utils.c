@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:50:25 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/14 19:39:31 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:41:38 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,33 @@ t_node	*node_create(int data)
 	return (node);
 }
 
-t_node	**create_start_node(void)
+t_node	**create_stack(void)
 {
-	t_node	**start_node;
+	t_node	**stack;
 
-	start_node = malloc(sizeof(t_node));
-	if (start_node == NULL)
+	stack = malloc(sizeof(t_node));
+	if (stack == NULL)
 		exit_error("Could not allocate memory");
-	*start_node = NULL;
-	return (start_node);
+	*stack = NULL;
+	return (stack);
 }
 
-void	check_repeated_data(t_node **start_node, int data)
+void	check_repeated_data(t_node **stack, int data)
 {
 	t_node	*current_node;
 
-	current_node = *start_node;
+	current_node = *stack;
 	if (current_node->data == data)
 	{
-		node_clear(start_node);
+		node_clear(stack);
 		exit_error("The list contains repeated numbers");
 	}
 	current_node = current_node->next;
-	while (current_node != *start_node)
+	while (current_node != *stack)
 	{
 		if (current_node->data == data)
 		{
-			node_clear(start_node);
+			node_clear(stack);
 			exit_error("The list contains repeated numbers");
 		}
 		current_node = current_node->next;
