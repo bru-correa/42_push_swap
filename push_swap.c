@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 18:34:31 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:29:10 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	main(int argc, char *argv[])
 	stack_a = create_stack_from_args(argv);
 	if (node_count(stack_a) == 1)
 		return (0);
-	print_stack(stack_a, "A");
 	stack_b = create_stack();
-	node_append(stack_b, 20);
-	node_append(stack_b, 30);
-	print_stack(stack_b, "B");
+	// print_stack(stack_a, "A");
+	// node_append(stack_b, 20);
+	// node_append(stack_b, 30);
+	// print_stack(stack_b, "B");
 	// test_swap(stack_a, stack_b);
-	test_push(stack_a, stack_b);
+	// test_push(stack_a, stack_b);
+	// test_rotate(stack_a, stack_b);
 	node_clear(stack_a);
 	free(stack_a);
 	node_clear(stack_b);
@@ -56,6 +57,7 @@ static t_node	**create_stack_from_args(char **argv)
 	return (stack);
 }
 
+// TODO: Fix memory leak when exit_error in operations
 static t_node	**add_arg_to_stack(t_node **stack, char *arg)
 {
 	int	number;
@@ -66,7 +68,11 @@ static t_node	**add_arg_to_stack(t_node **stack, char *arg)
 		node_append(stack, number);
 	}
 	else
+	{
+		node_clear(stack);
+		free(stack);
 		exit_error("Invalid arguments");
+	}
 	return (stack);
 }
 

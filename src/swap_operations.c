@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:57:32 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 02:00:04 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:12:05 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ static void	swap(t_node **stack)
 	t_node	*second_node;
 	int		temp_data;
 
+	if (stack == NULL)
+	{
+		exit_error("Invalid operation");
+		return ;
+	}
 	if (*stack == (*stack)->next)
 		return ;
 	first_node = *stack;

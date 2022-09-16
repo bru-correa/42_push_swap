@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:22:59 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 18:25:49 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:21:47 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,36 @@ void	test_push(t_node **stack_a, t_node **stack_b)
 	print_operations(operations);
 	print_stack(stack_a, "A");
 	print_stack(stack_b, "B");
+	operation_clear(operations);
+	free(operations);
+}
+
+void	test_rotate(t_node **stack_a, t_node **stack_b)
+{
+	t_operation	**operations;
+
+	operations = create_operations();
+	ft_printf("Rotate A\n");
+	rotate_a(stack_a, operations);
+	print_stack(stack_a, "A");
+	ft_printf("Rotate B\n");
+	rotate_b(stack_b, operations);
+	print_stack(stack_b, "B");
+	ft_printf("Rotate Both\n");
+	rotate_both(stack_a, stack_b, operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	ft_printf("Reverse Rotate A\n");
+	rev_rotate_a(stack_a, operations);
+	print_stack(stack_a, "A");
+	ft_printf("Reverse Rotate B\n");
+	rev_rotate_b(stack_b, operations);
+	print_stack(stack_b, "B");
+	ft_printf("Reverse Rotate Both\n");
+	rev_rotate_both(stack_a, stack_b, operations);
+	print_stack(stack_a, "A");
+	print_stack(stack_b, "B");
+	print_operations(operations);
 	operation_clear(operations);
 	free(operations);
 }

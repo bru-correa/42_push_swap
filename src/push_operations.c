@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:44:46 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 17:59:06 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:11:04 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ void	push_a(t_node **stack_a, t_node **stack_b, t_operation **operations)
 {
 	int	data;
 
-	if (*stack_b == NULL)
+	if (stack_a == NULL || stack_b == NULL)
+	{
+		exit_error("Invalid operation");
+		return ;
+	}
+	else if (*stack_b == NULL)
 	{
 		operation_append(operations, "pa");
 		return ;
@@ -31,7 +36,12 @@ void	push_b(t_node **stack_a, t_node **stack_b, t_operation **operations)
 {
 	int	data;
 
-	if (*stack_a == NULL)
+	if (stack_a == NULL || stack_b == NULL)
+	{
+		exit_error("Invalid operation");
+		return ;
+	}
+	else if (*stack_a == NULL)
 	{
 		operation_append(operations, "pb");
 		return ;

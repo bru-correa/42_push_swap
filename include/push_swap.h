@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 18:07:46 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:18:35 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,56 @@ void		push_a(t_node **stack_a, t_node **stack_b,
 void		push_b(t_node **stack_a, t_node **stack_b,
 				t_operation **operations);
 
+/**
+  Shift up all elements of `stack_a` by 1.
+  The first element becomes the last one.
+  If `stack_a` is empty, just save the operation.
+**/
+void		rotate_a(t_node **stack_a, t_operation **operations);
+
+/**
+  Shift up all elements of `stack_b` by 1.
+  The first element becomes the last one.
+  If `stack_b` is empty, just save the operation.
+**/
+void		rotate_b(t_node **stack_b, t_operation **operations);
+
+/**
+  Shift up all elements of `stack_a` and `stack_b` by 1.
+  The first element becomes the last one.
+  If `stack_a` and `stack_b` is empty, just save the operation.
+  If one is empty and the other is not, rotate the non empty one.
+**/
+void		rotate_both(t_node **stack_a, t_node **stack_b,
+		t_operation **operations);
+
+/**
+  Shift down all elements of `stack_a` by 1.
+  The last element becomes the first one.
+  If `stack_a` is empty, just save the operation.
+**/
+void		rev_rotate_a(t_node **stack_a, t_operation **operations);
+
+/**
+  Shift down all elements of `stack_b` by 1.
+  The last element becomes the first one.
+  If `stack_b` is empty, just save the operation.
+**/
+void		rev_rotate_b(t_node **stack_b, t_operation **operations);
+
+/**
+  Shift down all elements of `stack_a` and `stack_b` by 1.
+  The last element becomes the first one.
+  If the `stack_a` and `stack_b` are empty, just save the operation.
+  If one is empty and the other is not, rotate the non empty one.
+**/
+void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
+		t_operation **operations);
+
 void		test_operations(void);
 void		print_stack(t_node **stack, char *stack_name);
 void		test_swap(t_node **stack_a, t_node **stack_b);
 void		test_push(t_node **stack_a, t_node **stack_b);
+void		test_rotate(t_node **stack_a, t_node **stack_b);
 
 #endif
