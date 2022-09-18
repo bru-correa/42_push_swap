@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/18 00:15:28 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/18 04:54:41 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,9 @@ void		rev_rotate_b(t_node **stack_b, t_operation **operations);
 void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
 		t_operation **operations);
 
+/**
+  Get the middle number of the stack by using the quick sort algorithm
+**/
 int			find_middle_n(t_node **stack);
 
 void		test_operations(void);
