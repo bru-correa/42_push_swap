@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/16 19:18:35 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/18 00:15:28 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,8 @@ void		rev_rotate_b(t_node **stack_b, t_operation **operations);
 **/
 void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
 		t_operation **operations);
+
+int			find_middle_n(t_node **stack);
 
 void		test_operations(void);
 void		print_stack(t_node **stack, char *stack_name);

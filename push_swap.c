@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/16 19:29:10 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/18 03:46:49 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 	// test_swap(stack_a, stack_b);
 	// test_push(stack_a, stack_b);
 	// test_rotate(stack_a, stack_b);
+	ft_printf("Middle Number: %d\n", find_middle_n(stack_a));
 	node_clear(stack_a);
 	free(stack_a);
 	node_clear(stack_b);

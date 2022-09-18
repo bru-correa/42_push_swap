@@ -95,6 +95,9 @@ valgrind:			all
 tests:				all compile_message 
 					./tests/test.sh
 
+stest:				all compile_message
+					./tests/simple_test.sh
+
 # TODO: Make tests download my test repo
 
 .PHONY:	all run clean fclean re re_bonus libft debug setup_debug tests
