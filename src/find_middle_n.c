@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:31:53 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/18 04:54:39 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/18 10:27:14 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ static int	partition(int *values, int left, int right);
 static int	get_pivot_index(int *values, int left, int right);
 static void	swap_values(int *values, int a, int b);
 
-// TODO: Remember to error check stack outside of this function call
-int	find_middle_n(t_node **stack)
+int	find_median(t_node **stack)
 {
-	int	middle_index;
+	int	median_index;
 	int	*values;
 	int	stack_length;
-	int	middle_n;
+	int	median;
 
 	stack_length = node_count(stack);
-	middle_index = stack_length / 2;
+	median_index = stack_length / 2;
 	values = get_values(stack, stack_length);
 	quick_sort(values, 0, stack_length - 1);
-	middle_n = values[middle_index];
+	median = values[median_index];
 	free(values);
-	return (middle_n);
+	return (median);
 }
 
 // Copy the data from the stack to an array of integers
@@ -101,7 +100,7 @@ static int	partition(int *values, int left, int right)
 	{
 		if (values[j] <= pivot)
 		{
-			i +=1;
+			i += 1;
 			swap_values(values, i, j);
 		}
 		j++;

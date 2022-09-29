@@ -6,13 +6,11 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:22:59 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/16 19:31:31 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/18 10:31:19 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	print_operations(t_operation **operations);
 
 void	test_operations(void)
 {
@@ -99,7 +97,7 @@ void	test_rotate(t_node **stack_a, t_node **stack_b)
 	free(operations);
 }
 
-static void	print_operations(t_operation **operations)
+void	print_operations(t_operation **operations)
 {
 	t_operation	*current_op;
 

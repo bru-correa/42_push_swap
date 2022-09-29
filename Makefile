@@ -84,8 +84,8 @@ setup_debug:
 					$(eval CFLAGS+=-g)
 
 # Compile with -g flag and output the 'debug' file
-debug:				setup_debug all compile_message
-					gdb --quiet ./debug -tui
+debug:				clean setup_debug all compile_message
+					# gdb --quiet ./debug -tui
 
 valgrind:			all
 					$(VALGRIND) ./$(NAME) 1 2 3 4 5

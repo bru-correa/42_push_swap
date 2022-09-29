@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/18 04:54:41 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:00:34 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct s_operation
 	struct s_operation	*next;
 	char				*name;
 }	t_operation;
+
+typedef struct s_stacks
+{
+	t_node	**a;
+	t_node	**b;
+}	t_stacks;
 
 /********** PROTOTYPES **********/
 
@@ -120,26 +126,26 @@ t_operation	*operation_create(char *name);
 /**
   Create an operation with `name` and add it at the end of the list.
 **/
-void		operation_append(t_operation **operations, char *name);
+void		operation_append(t_operation **ops, char *name);
 
 /**
   Free all the elements of the list, free `operations` and return NULL
 **/
-void		operation_clear(t_operation **operations);
+void		operation_clear(t_operation **ops);
 
 /**
   Swap the first two elements at the top of the `stack_a`,
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
-void		swap_a(t_node **stack_a, t_operation **operations);
+void		swap_a(t_node **stack_a, t_operation **opss);
 
 /**
   Swap the first two elements at the top of the `stack_b`,
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
-void		swap_b(t_node **stack_b, t_operation **operations);
+void		swap_b(t_node **stack_b, t_operation **ops);
 
 /**
   Swap the first two elements at the top of `stack_a` and `stack_b`,
@@ -147,7 +153,7 @@ void		swap_b(t_node **stack_b, t_operation **operations);
   If there's one or no elements in the list, just save the operation.
 **/
 void		swap_both(t_node **stack_a, t_node **stack_b,
-				t_operation **operations);
+				t_operation **ops);
 
 /**
   Take the first element at the top of `stack_b`
@@ -155,7 +161,7 @@ void		swap_both(t_node **stack_a, t_node **stack_b,
   If there's one or no elements in the list, just save the operation.
 **/
 void		push_a(t_node **stack_a, t_node **stack_b,
-				t_operation **operations);
+				t_operation **ops);
 
 /**
   Take the first element at the top of `stack_a`
@@ -163,21 +169,21 @@ void		push_a(t_node **stack_a, t_node **stack_b,
   If there's one or no elements in the list, just save the operation.
 **/
 void		push_b(t_node **stack_a, t_node **stack_b,
-				t_operation **operations);
+				t_operation **ops);
 
 /**
   Shift up all elements of `stack_a` by 1.
   The first element becomes the last one.
   If `stack_a` is empty, just save the operation.
 **/
-void		rotate_a(t_node **stack_a, t_operation **operations);
+void		rotate_a(t_node **stack_a, t_operation **ops);
 
 /**
   Shift up all elements of `stack_b` by 1.
   The first element becomes the last one.
   If `stack_b` is empty, just save the operation.
 **/
-void		rotate_b(t_node **stack_b, t_operation **operations);
+void		rotate_b(t_node **stack_b, t_operation **ops);
 
 /**
   Shift up all elements of `stack_a` and `stack_b` by 1.
@@ -186,21 +192,21 @@ void		rotate_b(t_node **stack_b, t_operation **operations);
   If one is empty and the other is not, rotate the non empty one.
 **/
 void		rotate_both(t_node **stack_a, t_node **stack_b,
-		t_operation **operations);
+			t_operation **ops);
 
 /**
   Shift down all elements of `stack_a` by 1.
   The last element becomes the first one.
   If `stack_a` is empty, just save the operation.
 **/
-void		rev_rotate_a(t_node **stack_a, t_operation **operations);
+void		rev_rotate_a(t_node **stack_a, t_operation **ops);
 
 /**
   Shift down all elements of `stack_b` by 1.
   The last element becomes the first one.
   If `stack_b` is empty, just save the operation.
 **/
-void		rev_rotate_b(t_node **stack_b, t_operation **operations);
+void		rev_rotate_b(t_node **stack_b, t_operation **ops);
 
 /**
   Shift down all elements of `stack_a` and `stack_b` by 1.
@@ -209,14 +215,32 @@ void		rev_rotate_b(t_node **stack_b, t_operation **operations);
   If one is empty and the other is not, rotate the non empty one.
 **/
 void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
-		t_operation **operations);
+			t_operation **ops);
 
 /**
   Get the middle number of the stack by using the quick sort algorithm
 **/
-int			find_middle_n(t_node **stack);
+int			find_median(t_node **stack);
+
+void		split_sort(t_node **stack_a, t_node **stack_b,
+				t_operation **ops);
+
+t_stacks	*create_stacks_from_args(char **argv);
+
+int			is_sorted(t_node **stack_a);
+
+int			find_smallest_number(t_node **stack);
+
+void		sort_b(t_stacks *stacks, t_operation **ops, int split_count);
+
+int			split_b(t_stacks *stacks, t_operation **ops);
+
+void		split_sort2(t_stacks *stacks, t_operation **ops);
+
+// PROVISORY
 
 void		test_operations(void);
+void		print_operations(t_operation **operations);
 void		print_stack(t_node **stack, char *stack_name);
 void		test_swap(t_node **stack_a, t_node **stack_b);
 void		test_push(t_node **stack_a, t_node **stack_b);
