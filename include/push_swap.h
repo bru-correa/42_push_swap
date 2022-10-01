@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/27 15:00:34 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:48:14 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void		operation_clear(t_operation **ops);
   and store the operation in `operations`.
   If there's one or no elements in the list, just save the operation.
 **/
-void		swap_a(t_node **stack_a, t_operation **opss);
+void		swap_a(t_node **stack_a, t_operation **ops);
 
 /**
   Swap the first two elements at the top of the `stack_b`,
@@ -222,20 +222,26 @@ void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
 **/
 int			find_median(t_node **stack);
 
-void		split_sort(t_node **stack_a, t_node **stack_b,
-				t_operation **ops);
-
 t_stacks	*create_stacks_from_args(char **argv);
 
 int			is_sorted(t_node **stack_a);
 
 int			find_smallest_number(t_node **stack);
 
+// WARNING: Check if this is being used somewhere!!!
+int			find_largest_number(t_node **stack);
+
 void		sort_b(t_stacks *stacks, t_operation **ops, int split_count);
 
 int			split_b(t_stacks *stacks, t_operation **ops);
 
-void		split_sort2(t_stacks *stacks, t_operation **ops);
+void		split_sort(t_stacks *stacks, t_operation **ops);
+
+void		sort_two(t_stacks *stacks, t_operation **ops);
+
+void		sort_five(t_stacks *stacks, t_operation **ops);
+
+void		sort_three(t_node **stack_a, t_operation **ops);
 
 // PROVISORY
 

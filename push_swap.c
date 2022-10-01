@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/28 21:26:48 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:04:45 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ static void	sort(t_stacks *stacks, t_operation **ops)
 	if (length == 1)
 		return ;
 	else if (length == 2)
-		sort_two();
+		sort_two(stacks, ops);
+	else if (length == 3)
+		sort_three(stacks->a, ops);
 	else if (length <= 5)
-		small_sort();
+		sort_five(stacks, ops);
 	else
-		split_sort2(stacks, ops);
+		split_sort(stacks, ops);
 }
 
 static void	free_lists(t_stacks *stacks, t_operation **ops)

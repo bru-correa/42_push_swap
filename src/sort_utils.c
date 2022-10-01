@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:52:43 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/24 15:34:11 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:10:26 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_sorted(t_node **stack_a)
 	current_node = *stack_a;
 	while (length > 1)
 	{
-		if (current_node->data < current_node->next->data)
+		if (current_node->data > current_node->next->data)
 			return (FALSE);
 		current_node = current_node->next;
 		length--;
@@ -45,5 +45,23 @@ int	find_smallest_number(t_node **stack)
 		current_node = current_node->next;
 	}
 	return (smallest_n);
+}
+
+// WARNING: Break if stack is empty, check if it's empty before calling this!
+int	find_largest_number(t_node **stack)
+{
+	t_node	*current_node;
+	int		largest;
+
+	current_node = *stack;
+	largest = current_node->data;
+	current_node = current_node->next;
+	while (current_node != *stack)
+	{
+		if (current_node->data > largest)
+			largest = current_node->data;
+		current_node = current_node->next;
+	}
+	return (largest);
 }
 

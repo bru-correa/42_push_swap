@@ -92,8 +92,12 @@ valgrind:			all
 
 # ********** TESTS RULES ********** #
 
-tests:				all compile_message 
-					./tests/test.sh
+# tests:				all compile_message 
+# 					./tests/test.sh
+
+test:				all compile_message
+					cp push_swap tester/push_swap
+					bash tester/tester.sh
 
 stest:				all compile_message
 					./tests/simple_test.sh
