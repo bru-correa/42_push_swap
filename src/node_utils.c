@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:50:25 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 17:12:50 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:39:16 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*node_create(int data)
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)
-		exit_error("Could not allocate memory");
+		exit_error();
 	node->data = data;
 	node->next = node;
 	node->prev = node;
@@ -31,7 +31,7 @@ t_node	**create_stack(void)
 
 	stack = malloc(sizeof(t_node));
 	if (stack == NULL)
-		exit_error("Could not allocate memory");
+		exit_error();
 	*stack = NULL;
 	return (stack);
 }
@@ -44,7 +44,7 @@ void	check_repeated_data(t_node **stack, int data)
 	if (current_node->data == data)
 	{
 		node_clear(stack);
-		exit_error("The list contains repeated numbers");
+		exit_error();
 	}
 	current_node = current_node->next;
 	while (current_node != *stack)
@@ -52,7 +52,7 @@ void	check_repeated_data(t_node **stack, int data)
 		if (current_node->data == data)
 		{
 			node_clear(stack);
-			exit_error("The list contains repeated numbers");
+			exit_error();
 		}
 		current_node = current_node->next;
 	}

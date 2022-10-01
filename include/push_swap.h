@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 16:48:14 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:42:35 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ int			node_count(t_node **stack);
 void		check_repeated_data(t_node **stack, int data);
 
 /**
-  Print Error\n and `msg` to stderr and exit
+  Print Error\n and exit
 **/
-void		exit_error(char *msg);
+void		exit_error();
 
 /**
   Alloc memory and create the operations list. The first element is NULL
@@ -243,13 +243,10 @@ void		sort_five(t_stacks *stacks, t_operation **ops);
 
 void		sort_three(t_node **stack_a, t_operation **ops);
 
+void		print_operations(t_operation **operations);
+
 // PROVISORY
 
-void		test_operations(void);
-void		print_operations(t_operation **operations);
 void		print_stack(t_node **stack, char *stack_name);
-void		test_swap(t_node **stack_a, t_node **stack_b);
-void		test_push(t_node **stack_a, t_node **stack_b);
-void		test_rotate(t_node **stack_a, t_node **stack_b);
 
 #endif

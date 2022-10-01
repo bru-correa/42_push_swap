@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 17:04:45 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:41:49 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	main(int argc, char *argv[])
 	if (is_sorted(stacks->a) == TRUE)
 		return (0);
 	ops = create_operations();
-	// split_sort(stack_a, stack_b, ops);
-	// split_sort2(stacks, ops);
 	// print_stack(stacks->a, "A");
 	sort(stacks, ops);
 	print_operations(ops);

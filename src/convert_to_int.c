@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:57:55 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/13 20:58:47 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:38:20 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static long	get_result(const char *str, int sign)
 static void	check_overflow(long result, int sign)
 {
 	if (sign > 0 && result > INT_MAX)
-		exit_error("Invalid arguments");
+		exit_error();
 	else if (sign < 0 && result * sign < INT_MIN)
-		exit_error("Invalid arguments");
+		exit_error();
 }

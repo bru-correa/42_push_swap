@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   print_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 19:18:07 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:38:38 by bcorrea-         ###   ########.fr       */
+/*   Created: 2022/10/01 18:43:14 by bcorrea-          #+#    #+#             */
+/*   Updated: 2022/10/01 18:44:23 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	exit_error()
+void	print_operations(t_operation **ops)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
+	t_operation	*current_op;
+
+	if (ops == NULL)
+		return ;
+	current_op = *ops;
+	while (current_op != NULL)
+	{
+		ft_printf("%s\n", current_op->name);
+		current_op = current_op->next;
+	}
 }

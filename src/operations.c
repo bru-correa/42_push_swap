@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:45:22 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/15 02:06:50 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:39:37 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_operation	**create_operations(void)
 
 	operations = malloc(sizeof(t_operation));
 	if (operations == NULL)
-		exit_error("Could not allocate memory");
+		exit_error();
 	*operations = NULL;
 	return (operations);
 }
@@ -29,7 +29,7 @@ t_operation	*operation_create(char *name)
 
 	operation = malloc(sizeof(t_operation));
 	if (operation == NULL)
-		exit_error("Could not allocate memory");
+		exit_error();
 	operation->name = name;
 	operation->next = NULL;
 	return (operation);

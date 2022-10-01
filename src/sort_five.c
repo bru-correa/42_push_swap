@@ -6,23 +6,20 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 22:29:24 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:19:18 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:23:37 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	push_smaller_half(t_stacks *stacks, t_operation **ops);
-// static void	small_sort_a(t_stacks *stacks, t_operation **ops);
 static void	sort_smaller_half(t_stacks *stacks, t_operation **ops);
-// static int	get_rotations(t_node **stack, int largest);
 
 void	sort_five(t_stacks *stacks, t_operation **ops)
 {
 	int	length;
 
 	push_smaller_half(stacks, ops);
-	// small_sort_a(stacks, ops);
 	length = node_count(stacks->a);
 	if (length == 2)
 		sort_two(stacks, ops);

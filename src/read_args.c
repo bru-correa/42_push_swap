@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:47:22 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/24 15:47:26 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:40:17 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stacks	*create_stacks_from_args(char **argv)
 
 	stacks = malloc(sizeof(t_stacks));
 	if (stacks == NULL)
-		exit_error("Could not allocate memory");
+		exit_error();
 	stacks->a = create_stack();
 	i = 1;
 	while (argv[i] != NULL)
@@ -49,7 +49,7 @@ static t_node	**add_arg_to_stack(t_node **stack, char *arg)
 	{
 		node_clear(stack);
 		free(stack);
-		exit_error("Invalid arguments");
+		exit_error();
 	}
 	return (stack);
 }
