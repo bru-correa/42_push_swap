@@ -6,13 +6,13 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:18:07 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:38:38 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:11:32 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	exit_error()
+void	exit_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);

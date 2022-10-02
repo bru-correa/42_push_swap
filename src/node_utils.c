@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:50:25 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:39:16 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:08:05 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ void	check_repeated_data(t_node **stack, int data)
 		current_node = current_node->next;
 	}
 }
-

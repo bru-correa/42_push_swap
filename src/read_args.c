@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:47:22 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:40:17 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:08:22 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_stacks	*create_stacks_from_args(char **argv)
 	return (stacks);
 }
 
-// TODO: Fix memory leak when exit_error in operations
 static t_node	**add_arg_to_stack(t_node **stack, char *arg)
 {
 	int	number;

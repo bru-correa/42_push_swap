@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:52:43 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 17:10:26 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:09:46 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	find_smallest_number(t_node **stack)
 	return (smallest_n);
 }
 
-// WARNING: Break if stack is empty, check if it's empty before calling this!
 int	find_largest_number(t_node **stack)
 {
 	t_node	*current_node;
@@ -64,4 +63,3 @@ int	find_largest_number(t_node **stack)
 	}
 	return (largest);
 }
-

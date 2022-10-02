@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:57:32 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/16 19:12:05 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:38:33 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	swap_both(t_node **stack_a, t_node **stack_b, t_operation **operations)
 	operation_append(operations, "ss");
 }
 
-// Check if there's more than one element in the list first
 static void	swap(t_node **stack)
 {
 	t_node	*first_node;
@@ -42,7 +41,7 @@ static void	swap(t_node **stack)
 
 	if (stack == NULL)
 	{
-		exit_error("Invalid operation");
+		exit_error();
 		return ;
 	}
 	if (*stack == (*stack)->next)

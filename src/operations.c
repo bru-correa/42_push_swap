@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:45:22 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:39:37 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:08:09 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,3 @@ void	operation_clear(t_operation **operations)
 		free(last_op);
 	}
 }
-
-

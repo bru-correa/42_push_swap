@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:24:49 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:41:49 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:06:43 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char *argv[])
 	if (is_sorted(stacks->a) == TRUE)
 		return (0);
 	ops = create_operations();
-	// print_stack(stacks->a, "A");
 	sort(stacks, ops);
 	print_operations(ops);
 	free_lists(stacks, ops);
@@ -59,24 +58,4 @@ static void	free_lists(t_stacks *stacks, t_operation **ops)
 	free(stacks);
 	operation_clear(ops);
 	free(ops);
-}
-
-void	print_stack(t_node **stack, char *stack_name)
-{
-	t_node	*current_node;
-
-	if (*stack == NULL)
-	{
-		ft_printf("The stack %s is empty\n", stack_name);
-		return ;
-	}
-	ft_printf("Stack %s:\n", stack_name);
-	current_node = *stack;
-	ft_printf("%d\n", current_node->data);
-	current_node = current_node->next;
-	while (current_node != *stack)
-	{
-		ft_printf("%d\n", current_node->data);
-		current_node = current_node->next;
-	}
 }

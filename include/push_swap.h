@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:42:35 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:41:40 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		check_repeated_data(t_node **stack, int data);
 /**
   Print Error\n and exit
 **/
-void		exit_error();
+void		exit_error(void);
 
 /**
   Alloc memory and create the operations list. The first element is NULL
@@ -192,7 +192,7 @@ void		rotate_b(t_node **stack_b, t_operation **ops);
   If one is empty and the other is not, rotate the non empty one.
 **/
 void		rotate_both(t_node **stack_a, t_node **stack_b,
-			t_operation **ops);
+				t_operation **ops);
 
 /**
   Shift down all elements of `stack_a` by 1.
@@ -215,38 +215,67 @@ void		rev_rotate_b(t_node **stack_b, t_operation **ops);
   If one is empty and the other is not, rotate the non empty one.
 **/
 void		rev_rotate_both(t_node **stack_a, t_node **stack_b,
-			t_operation **ops);
+				t_operation **ops);
+
+/**
+  Sort the values array by using the "divide and conquer" logic.
+  It recursively divides the array in two sides,
+  the values that are smaller than the pivot will be at the left side,
+  the values that are larger than the pivot will be at the right side,
+  and the pivot value will be between the two, in the correct index.
+  The pivot is defined by the partition function.
+  `left` is the start index.
+  `right` is the end index.
+**/
+void		quick_sort(int *values, int left, int right);
 
 /**
   Get the middle number of the stack by using the quick sort algorithm
 **/
 int			find_median(t_node **stack);
 
+/**
+  Read `argv` and create Stack A and Stack B
+**/
 t_stacks	*create_stacks_from_args(char **argv);
 
 int			is_sorted(t_node **stack_a);
 
 int			find_smallest_number(t_node **stack);
 
-// WARNING: Check if this is being used somewhere!!!
 int			find_largest_number(t_node **stack);
-
-void		sort_b(t_stacks *stacks, t_operation **ops, int split_count);
-
-int			split_b(t_stacks *stacks, t_operation **ops);
-
-void		split_sort(t_stacks *stacks, t_operation **ops);
-
-void		sort_two(t_stacks *stacks, t_operation **ops);
-
-void		sort_five(t_stacks *stacks, t_operation **ops);
-
-void		sort_three(t_node **stack_a, t_operation **ops);
 
 void		print_operations(t_operation **operations);
 
-// PROVISORY
+/********* MAIN SORTING **********/
 
-void		print_stack(t_node **stack, char *stack_name);
+/**
+  Divide Stack B recursively until it only contains 3 or less elements,
+  then sort them by pushing the smallest to the bottom of Stack A.
+  If Stack A is empty, get `split_count` elements from Stack A.
+**/
+void		sort_b(t_stacks *stacks, t_operation **ops, int split_count);
+
+/**
+  Get the median of Stack B,
+  then send the elements larger than the median to the top of Stack A.
+  Returns the amount of elements sent to Stack A.
+**/
+int			split_b(t_stacks *stacks, t_operation **ops);
+
+/**
+  Get the median of Stack A, then split the array in half.
+  Push the smaller half to Stack B and then sort it back to Stack A.
+  Then, push the larger half to Stack B and then sort it back to Stack A.
+**/
+void		split_sort(t_stacks *stacks, t_operation **ops);
+
+/********** SMALL SORTING **********/
+
+void		sort_two(t_stacks *stacks, t_operation **ops);
+
+void		sort_three(t_node **stack_a, t_operation **ops);
+
+void		sort_five(t_stacks *stacks, t_operation **ops);
 
 #endif

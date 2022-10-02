@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bcorrea->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 16:37:56 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/09/27 16:10:22 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:09:04 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ static void	push_sorted_to_a(t_stacks *stacks, t_operation **ops)
 		}
 	}
 }
-
