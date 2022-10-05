@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:57:54 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 22:08:02 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:18:00 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	node_append(t_node **stack, int data)
 		*stack = new_node;
 		return ;
 	}
-	check_repeated_data(stack, data);
 	last_node = (*stack)->prev;
 	last_node->next = new_node;
 	(*stack)->prev = new_node;

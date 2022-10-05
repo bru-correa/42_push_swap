@@ -6,7 +6,7 @@
 /*   By: bcorrea- <bruuh.cor@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 01:54:18 by bcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/01 22:41:40 by bcorrea-         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:19:34 by bcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,6 @@ void		node_clear(t_node **stack);
   Return the length of the stack. If the list is empty returns 0
 **/
 int			node_count(t_node **stack);
-
-/**
-  Check if `data` already exists in the stack
-**/
-void		check_repeated_data(t_node **stack, int data);
 
 /**
   Print Error\n and exit
@@ -277,5 +272,13 @@ void		sort_two(t_stacks *stacks, t_operation **ops);
 void		sort_three(t_node **stack_a, t_operation **ops);
 
 void		sort_five(t_stacks *stacks, t_operation **ops);
+
+/********** FREE MEMORY **********/
+
+void		free_all(t_stacks *stacks, t_operation **ops);
+
+void		free_stacks(t_stacks *stacks);
+
+void		free_ops(t_operation **ops);
 
 #endif

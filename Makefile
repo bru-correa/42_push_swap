@@ -14,8 +14,8 @@ CLEANING_MSG		= "$(RED)Cleaning up...$(NOCOLOR)"
 
 NAME				= push_swap
 CC					= gcc
-CFLAGS				= -Wall -Wextra -Werror $(CFLAGS_LIBFT) -I$(INCLUDE_DIR)
-CFLAGS_LIBFT		= -lft -L $(LIBFT_DIR) -I $(LIBFT_DIR)
+CFLAGS				= -Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(INCLUDE_DIR)
+CFLAGS_LIB			= -lft -L $(LIBFT_DIR)
 
 INCLUDE_DIR			= include
 SRC_DIR				= src
@@ -48,7 +48,8 @@ TEST_MAIN			= tests.c
 all:				$(NAME)
 
 $(NAME):			required
-					$(CC) $(MAIN) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
+					$(CC) $(MAIN) $(OBJ_FILES) $(CFLAGS) $(CFLAGS_LIB) \
+						-o $(NAME)
 					echo $(DONE_MSG)
 
 # Compile required src files
@@ -66,9 +67,11 @@ $(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c
 clean:
 					echo $(CLEANING_MSG)
 					rm -rf $(OBJ_DIR)
+					$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean:				clean
 					rm -f $(NAME)
+					$(MAKE) -C $(LIBFT_DIR) fclean
 
 re:					fclean all
 
