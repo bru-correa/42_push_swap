@@ -9,3 +9,4 @@ checker
 *.log
 gdb_script
 tester
+libft.a
